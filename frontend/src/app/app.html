@@ -1,0 +1,14 @@
+<div style="padding: 20px; font-family: sans-serif">
+  <h1>✈️ Ma Travel Bucket List</h1>
+
+  <div *ngIf="destinations.length === 0">
+    <p>Aucun voyage pour le moment (ou chargement en cours...)</p>
+  </div>
+
+  <ul>
+    <li *ngFor="let dest of destinations">
+      <strong>Idée de voyage : {{ dest.country }}</strong>
+      <img [src]="dest.imageUrl" alt="{{ dest.country }}" width="200" />
+    </li>
+  </ul>
+</div>
