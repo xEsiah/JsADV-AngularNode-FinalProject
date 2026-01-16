@@ -1,0 +1,28 @@
+<h2 class="page-title">Mes destinations</h2>
+
+<div *ngIf="destinations$ | async as destinations; else loading">
+  <div class="destinations-list">
+    <article class="destination-card" *ngFor="let dest of destinations">
+      <div class="destination-info">
+        <h3>{{ dest.country }}</h3>
+        <p class="budget">{{ dest.budget }} €</p>
+      </div>
+      <div class="destination-image">
+        <img
+          class="image-main"
+          [src]="'assets/' + dest.imageUrl"
+          alt="{{ dest.country }}"
+        />
+        <img
+          class="image-hover"
+          [src]="'assets/' + dest.imageUrl"
+          alt="{{ dest.country }}"
+        />
+      </div>
+    </article>
+  </div>
+</div>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

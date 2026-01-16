@@ -9,7 +9,6 @@ dotenv.config();
 const app: Application = express();
 const port = 3000;
 
-// Middlewares de base
 app.use(cors());
 app.use(express.json());
 

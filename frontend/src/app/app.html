@@ -1,14 +1,23 @@
-<div style="padding: 20px; font-family: sans-serif">
-  <h1>✈️ Ma Travel Bucket List</h1>
-
-  <div *ngIf="destinations.length === 0">
-    <p>Aucun voyage pour le moment (ou chargement en cours...)</p>
-  </div>
-
-  <ul>
-    <li *ngFor="let dest of destinations">
-      <strong>Idée de voyage : {{ dest.country }}</strong>
-      <img [src]="dest.imageUrl" alt="{{ dest.country }}" width="200" />
-    </li>
-  </ul>
-</div>
+<header class="main-header">
+  <h1>
+    <a routerLink="/"> WYG-TIWIF</a>
+  </h1>
+  <a href="/"><img src="icon.png" alt="Logo" /></a>
+  <nav class="nav-menu">
+    <a routerLink="/destinations" class="nav-item">
+      <span class="main-text">Mes destinations</span>
+      <span class="hover-text">Consulter</span>
+    </a>
+    <a routerLink="/profil" class="nav-item">
+      <span class="main-text">Mon profil</span>
+      <span class="hover-text">Modifier</span>
+    </a>
+    <a routerLink="/friends" class="nav-item">
+      <span class="main-text">Mes amis</span>
+      <span class="hover-text">Gérer</span>
+    </a>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>

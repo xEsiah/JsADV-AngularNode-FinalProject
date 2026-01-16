@@ -11,11 +11,17 @@ export class DestinationService {
 
   constructor(private http: HttpClient) {}
 
-  getAllDestinations(): Observable<Destination[]> {
-    return this.http.get<Destination[]>(this.apiUrl);
-  }
-
-  addDestination(destination: Destination): Observable<any> {
-    return this.http.post(this.apiUrl, destination);
+  getAll(): Observable<Destination[]> {
+    return new Observable((observer) => {
+      this.http.get<Destination[]>(this.apiUrl).subscribe({
+        next: (data) => {
+          observer.next(data);
+          observer.complete();
+        },
+        error: (err) => {
+          observer.error(err);
+        },
+      });
+    });
   }
 }

@@ -1,0 +1,98 @@
+/* TITLE */
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* LIST */
+.destinations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* CARD */
+.destination-card {
+  display: flex;
+  align-items: stretch;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 220px;
+  transition: border-color 0.2s ease;
+}
+
+.destination-card:hover {
+  border-color: var(--accent);
+}
+
+/* INFO */
+.destination-info {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.destination-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.budget {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* IMAGE CONTAINER */
+.destination-image {
+  flex: 3;
+  position: relative;
+  overflow: hidden;
+  background: #020617;
+}
+
+/* IMAGES */
+.destination-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+/* IMAGE PRINCIPALE */
+.image-main {
+  transform: translateX(0);
+}
+
+/* IMAGE HOVER */
+.image-hover {
+  transform: translateY(-100%);
+}
+
+/* HOVER EFFECT */
+.destination-card:hover .image-main {
+  transform: translateY(20%);
+}
+
+.destination-card:hover .image-hover {
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .destination-card {
+    flex-direction: column;
+  }
+
+  .destination-image {
+    height: 180px;
+  }
+}
