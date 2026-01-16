@@ -2,7 +2,7 @@
   <h1>
     <a routerLink="/"> WYG-TIWIF</a>
   </h1>
-  <a href="/"><img src="icon.png" alt="Logo" /></a>
+  <a routerLink="/"><img src="icon.png" alt="Logo" /></a>
   <nav class="nav-menu">
     <a routerLink="/destinations" class="nav-item">
       <span class="main-text">Mes destinations</span>
@@ -19,5 +19,8 @@
   </nav>
 </header>
 <main>
+  <h2 *ngIf="router.url === '/'" class="page-title">
+    Ravi de vous revoir {{ username }} !
+  </h2>
   <router-outlet></router-outlet>
 </main>
