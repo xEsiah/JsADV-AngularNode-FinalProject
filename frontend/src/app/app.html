@@ -1,8 +1,7 @@
 <header class="main-header">
-  <h1>
-    <a routerLink="/"> WYG-TIWIF</a>
-  </h1>
+  <h1><a routerLink="/"> WYG-TIWIF</a></h1>
   <a routerLink="/"><img src="icon.png" alt="Logo" /></a>
+
   <nav class="nav-menu">
     <a routerLink="/destinations" class="nav-item">
       <span class="main-text">Mes destinations</span>
@@ -18,9 +17,13 @@
     </a>
   </nav>
 </header>
+
 <main>
-  <h2 *ngIf="router.url === '/'" class="page-title">
-    Ravi de vous revoir {{ username }} !
-  </h2>
+  @if (authService.isLoggedIn() && router.url === '/') {
+  <h2 class="page-title">Ravi de vous revoir {{ username }} !</h2>
+  } @if (!authService.isLoggedIn() && router.url === '/') {
+  <app-auth></app-auth>
+  }
+
   <router-outlet></router-outlet>
 </main>

@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DestinationService } from './destination.service';
 import { Observable } from 'rxjs';
 import { Destination } from './destination.model';
 import { SpinnerComponent } from '../shared/spinner/spinner';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-destinations',
   standalone: true,
-  imports: [CommonModule, SpinnerComponent],
+  imports: [SpinnerComponent, AsyncPipe],
   templateUrl: './destination.component.html',
   styleUrls: ['./destination.component.scss'],
 })

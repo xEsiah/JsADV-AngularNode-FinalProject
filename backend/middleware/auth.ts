@@ -1,19 +1,34 @@
 import { Request, Response, NextFunction } from "express";
-import jsonwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
-export const authMiddleware = (req: any, res: Response, next: NextFunction) => {
+interface AuthRequest extends Request {
+  auth?: {
+    userId: string;
+  };
+}
+
+export const authMiddleware = (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+): void => {
   try {
-    const token = req.headers.authorization.split(" ")[1];
+    const header = req.headers.authorization;
+    if (!header) {
+      throw new Error("Token absent");
+    }
+    const token = header.split(" ")[1];
 
-    const decodedToken: any = jsonwt.verify(
-      token,
-      "3bdb18ae95724064d78bc6555af763c9"
-    );
+    const secret = process.env.JWT_SECRET;
+    if (!secret) {
+      throw new Error("Erreur serveur : JWT_SECRET manquant");
+    }
+    const decodedToken = jwt.verify(token, secret) as JwtPayload;
 
     const userId = decodedToken.userId;
-
-    req.authMiddleware = { userId };
-
+    req.auth = {
+      userId: userId,
+    };
     next();
   } catch (error) {
     res.status(401).json({ error: "Requête non authentifiée !" });

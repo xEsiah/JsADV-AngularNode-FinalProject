@@ -1,28 +1,43 @@
 <h2 class="page-title">Mes destinations</h2>
 
-<div *ngIf="destinations$ | async as destinations; else loading">
+@if (destinations$ | async; as destinations) {
   <div class="destinations-list">
-    <article class="destination-card" *ngFor="let dest of destinations">
-      <div class="destination-info">
-        <h3>{{ dest.country }}</h3>
-        <p class="budget">{{ dest.budget }} €</p>
-      </div>
-      <div class="destination-image">
-        <img
-          class="image-main"
-          [src]="'assets/' + dest.imageUrl"
-          alt="{{ dest.country }}"
-        />
-        <img
-          class="image-hover"
-          [src]="'assets/' + dest.imageUrl"
-          alt="{{ dest.country }}"
-        />
-      </div>
-    </article>
-  </div>
-</div>
+    @for (dest of destinations; track dest._id) {
+      <article class="destination-card" [class.visited]="dest.isVisited">
+        <div class="destination-info">
+          <div class="header-card">
+            <h3>{{ dest.country }}</h3>
+            @if (dest.isVisited) {
+              <span class="badge">Visité</span>
+            }
+          </div>
 
-<ng-template #loading>
+          <p class="cities">
+            @for (city of dest.cities; track $index) {
+              <span>{{ city }}{{ !$last ? ", " : "" }}</span>
+            }
+          </p>
+
+          <p class="budget">{{ dest.budget }} €</p>
+        </div>
+
+        <div class="destination-image">
+          <img
+            class="image-main"
+            [src]="'assets/' + dest.imageUrl"
+            [alt]="dest.country"
+          />
+          <img
+            class="image-hover"
+            [src]="'assets/' + dest.imageUrl"
+            [alt]="dest.country"
+          />
+        </div>
+      </article>
+    } @empty {
+      <p>Aucune destination trouvée.</p>
+    }
+  </div>
+} @else {
   <app-spinner></app-spinner>
-</ng-template>
+}

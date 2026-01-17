@@ -1,0 +1,133 @@
+.profil-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 20px;
+}
+
+.profil-container > div,
+.profile-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: var(--accent);
+  }
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-family: "Lemon", cursive;
+  font-size: 24px;
+  text-align: center;
+  color: var(--text);
+  letter-spacing: 1px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-size: 15px;
+    transition: all 0.2s ease;
+
+    &::placeholder {
+      color: var(--muted);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-dark);
+    }
+  }
+}
+
+button {
+  background: var(--accent);
+  color: var(--text);
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+  margin-top: 8px;
+
+  &:hover {
+    background: #c24b4b;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+.profile-card button {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border);
+
+  &:hover {
+    background: var(--accent-dark);
+    border-color: var(--accent);
+  }
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--muted);
+
+  &[click] {
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+  }
+}
+
+p:last-child {
+  cursor: pointer;
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.profile-card {
+  text-align: center;
+
+  p {
+    font-size: 18px;
+    color: var(--text);
+    margin-bottom: 30px;
+
+    strong,
+    span {
+      color: var(--accent);
+      font-weight: bold;
+    }
+  }
+}

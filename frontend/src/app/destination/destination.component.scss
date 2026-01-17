@@ -41,6 +41,31 @@
   font-size: 14px;
   color: var(--muted);
 }
+.cities {
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin: 4px 0;
+  font-style: italic;
+}
+
+.header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  background: var(--green);
+  color: white;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+.destination-card.visited {
+  border-left: 5px solid var(--green);
+}
 
 /* IMAGE CONTAINER */
 .destination-image {

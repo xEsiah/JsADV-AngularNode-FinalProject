@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 24px 32px; /* 🔥 plus grand */
+  padding: 24px 32px;
   border-bottom: 1px solid var(--border);
   background-color: var(--bg);
 }
@@ -33,7 +33,9 @@
   text-decoration: none;
   color: var(--text);
   letter-spacing: 2px;
-  transition: color 0.25s ease, transform 0.25s ease;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
   display: inline-block;
 }
 
@@ -61,7 +63,9 @@
 
 .nav-item .main-text {
   display: inline-block;
-  transition: transform 0.25s ease, color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
 }
 
 .nav-item .hover-text {

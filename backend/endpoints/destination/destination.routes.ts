@@ -4,10 +4,11 @@ import { authMiddleware } from "../../middleware/auth";
 
 const router = express.Router();
 
-router.get("/", destinationCtrl.getAllDestinations);
-router.post("/", destinationCtrl.createDestination);
-router.get("/:id", destinationCtrl.getOneDestination);
-router.put("/:id", destinationCtrl.modifyDestination);
-router.delete("/:id", destinationCtrl.deleteDestination);
+// On ajoute authMiddleware entre le chemin et le contrôleur
+router.get("/", authMiddleware, destinationCtrl.getAllDestinations);
+router.post("/", authMiddleware, destinationCtrl.createDestination);
+router.get("/:id", authMiddleware, destinationCtrl.getOneDestination);
+router.put("/:id", authMiddleware, destinationCtrl.modifyDestination);
+router.delete("/:id", authMiddleware, destinationCtrl.deleteDestination);
 
 export default router;

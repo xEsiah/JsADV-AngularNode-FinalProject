@@ -1,1 +1,16 @@
-<h2 class="page-title">Mon profil</h2>
+<div class="profil-container">
+  <div class="profile-card">
+    <h2>Mon Profil</h2>
+
+    <div class="info-group">
+      <label>Pseudo :</label>
+      <p>
+        <span>{{ authService.getUsername() }}</span>
+      </p>
+    </div>
+
+    <button (click)="authService.logout()" class="btn-logout">
+      Se déconnecter
+    </button>
+  </div>
+</div>

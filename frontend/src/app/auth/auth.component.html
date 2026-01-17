@@ -1,0 +1,54 @@
+<div class="profil-container">
+  @if (isLoginMode) {
+    <div>
+      <h2>Connexion</h2>
+      <form (submit)="onLogin()">
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="loginData.email"
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="loginData.password"
+          placeholder="Mot de passe"
+          required
+        />
+        <button type="submit">Entrer</button>
+      </form>
+      <p (click)="toggleMode()">Pas de compte ? Inscrivez-vous</p>
+    </div>
+  } @else {
+    <div>
+      <h2>Créer un compte</h2>
+      <form (submit)="onRegister()">
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="registerData.email"
+          placeholder="Email"
+          required
+        />
+        <input
+          type="text"
+          name="username"
+          [(ngModel)]="registerData.username"
+          placeholder="Pseudo"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="registerData.password"
+          placeholder="Mot de passe"
+          required
+        />
+        <button type="submit">S'inscrire</button>
+      </form>
+      <p (click)="toggleMode()">Déjà inscrit ? Connectez-vous</p>
+    </div>
+  }
+</div>
