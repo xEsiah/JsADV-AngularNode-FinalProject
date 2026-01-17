@@ -3,12 +3,16 @@ import { DestinationComponent } from './destination/destination.component';
 import { FriendComponent } from './friend/friend.component';
 import { ProfilComponent } from './profil/profil.component';
 import { AuthComponent } from './auth/auth.component';
+import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
+  {
+    path: 'destinations',
+    component: DestinationComponent,
+    canActivate: [authGuard],
+  },
   { path: '', children: [] },
-  { path: 'authentification', component: AuthComponent },
-  { path: 'destinations', component: DestinationComponent },
-  { path: 'friends', component: FriendComponent },
-  { path: 'profil', component: ProfilComponent },
+  { path: 'friends', component: FriendComponent, canActivate: [authGuard] },
+  { path: 'profil', component: ProfilComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: '' },
 ];

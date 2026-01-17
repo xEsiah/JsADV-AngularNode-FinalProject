@@ -2,6 +2,7 @@
   <h1><a routerLink="/"> WYG-TIWIF</a></h1>
   <a routerLink="/"><img src="icon.png" alt="Logo" /></a>
 
+  @if (authService.isLoggedIn()){
   <nav class="nav-menu">
     <a routerLink="/destinations" class="nav-item">
       <span class="main-text">Mes destinations</span>
@@ -16,6 +17,7 @@
       <span class="hover-text">Gérer</span>
     </a>
   </nav>
+  }
 </header>
 
 <main>
@@ -24,6 +26,5 @@
   } @if (!authService.isLoggedIn() && router.url === '/') {
   <app-auth></app-auth>
   }
-
   <router-outlet></router-outlet>
 </main>
