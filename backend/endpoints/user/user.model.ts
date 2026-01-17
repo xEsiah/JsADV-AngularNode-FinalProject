@@ -1,4 +1,7 @@
 import mongoose, { Schema } from "mongoose";
+import { UserDocument } from "../../interfaces";
+
+export interface IUser extends UserDocument, Document {}
 
 const userSchema: Schema = new Schema({
   email: { type: String, required: true, unique: true },
@@ -8,4 +11,4 @@ const userSchema: Schema = new Schema({
   pfpUrl: { type: String, required: false },
 });
 
-export default mongoose.model("User", userSchema, "User");
+export default mongoose.model<IUser>("User", userSchema, "User");

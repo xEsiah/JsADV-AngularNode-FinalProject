@@ -1,33 +1,21 @@
-import { Request, Response, NextFunction } from "express";
+import { Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-
-interface AuthRequest extends Request {
-  auth?: {
-    userId: string;
-  };
-}
+import { AuthRequest } from "../interfaces";
 
 export const authMiddleware = (
   req: AuthRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): void => {
   try {
-    const header = req.headers.authorization;
-    if (!header) {
-      throw new Error("Token absent");
-    }
-    const token = header.split(" ")[1];
-
-    const secret = process.env.JWT_SECRET;
-    if (!secret) {
-      throw new Error("Erreur serveur : JWT_SECRET manquant");
-    }
-    const decodedToken = jwt.verify(token, secret) as JwtPayload;
-
-    const userId = decodedToken.userId;
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) throw new Error("Token absent");
+    const decodedToken = jwt.verify(
+      token,
+      process.env.JWT_SECRET!,
+    ) as JwtPayload;
     req.auth = {
-      userId: userId,
+      userId: decodedToken.userId,
     };
     next();
   } catch (error) {
